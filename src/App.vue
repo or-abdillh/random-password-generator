@@ -1,21 +1,33 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+   <h3>Random Password Generator</h3>
+   <Form></Form>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<script>
+   
+   import Form from './components/Form.vue'
+   
+   export default {
+      name: 'App',
+      components: {
+         Form
+      }
+   }
+   
+</script>
+
+<style lang="scss">
+   
+   #app {
+      margin: 0;
+      padding: .75rem 1.5rem;
+      font-size: 24px;
+      font-family: Sans-Serif;
+      box-sizing: border-box;
+      
+      &::after, &::before {
+         display: block;
+      }
+   }
+   
 </style>
