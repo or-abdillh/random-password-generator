@@ -1,18 +1,79 @@
 <template>
    <section id="Form" >
       <label for="lengthPassword">How length password you want ?</label>
-      <input type="number" placeholder="ex: 8" name="lengthPassword" id="lengthPassword" />
-      <button type="button">Generate</button>
-      <span id="result">
-         43yery
+      <input v-model="lengthPassword" type="number" placeholder="ex: 8" name="lengthPassword" id="lengthPassword" />
+      <button @click="generatePassword" type="button">Generate</button>
+      <button @click="reset" type="button">Reset</button>
+      <span v-if="result != ''" id="result">
+         <small>Your password : </small>
+         <p>{{ result }}</p>
       </span>
    </section>
 </template>
 
 <script>
    
+   import { ref } from 'vue'
+   
    export default {
-      name: 'Form'
+      name: 'Form',
+      setup() {
+         const result = ref('')
+         const lengthPassword = ref('')
+         
+         //Get boolean
+         const getBoolean = () => {
+            return ( Math.round( Math.random() * 1 ) == 1 ? true : false )
+         }
+         
+         //Get number
+         const getNumber = () => {
+            const number = '1234567890'.split('')
+            
+            let index = Math.round(Math.random() * 9)
+            
+            return number[index]
+         } 
+         
+         //Get string / character
+         const getString = () => {
+            const string = 'qwertyuiopasdfghjklzxcvbnm'.split('')
+            const isUpper = getBoolean()
+            let index = Math.round(Math.random() * 25)
+            
+            if (isUpper) {
+               return string[index].toUpperCase()
+            } else {
+               return string[index]
+            }
+         }
+         
+         //Generate password
+         const generatePassword = () => {
+            
+            result.value = ''
+            let password = []
+            
+            for (let i = 0; i < parseInt(lengthPassword.value); i++ ) {
+               let isNumber = getBoolean()
+               
+               if (isNumber) {
+                  password.push(getNumber())
+               } else {
+                  password.push(getString())
+               }
+            }
+            result.value = password.join('')
+         }
+         
+         const reset = () => {
+            result.value = ''
+            lengthPassword.value = ''
+         }
+         
+         return { lengthPassword, result, generatePassword, reset }
+         
+      }
    }
    
 </script>
@@ -37,15 +98,17 @@
          padding: .25rem .35rem;
          font-size: 1rem;
          margin-bottom: 1rem;
+         margin-right: .5rem;
       }
       
       #result {
          width: 100%;
-         text-align: center;
          background: whitesmoke;
          padding: .35rem .25rem;
          color: rgba(black, .85);
          font-weight: bold;
+         font-size: 1rem;
+         word-break: break-all;
       }
    }
    
