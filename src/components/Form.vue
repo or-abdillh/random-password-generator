@@ -1,9 +1,9 @@
 <template>
    <section id="Form" >
       <label for="lengthPassword">How length password you want ?</label>
-      <input v-model="lengthPassword" type="number" placeholder="ex: 8" name="lengthPassword" id="lengthPassword" />
-      <button @click="generatePassword" type="button">Generate</button>
-      <button @click="reset" type="button">Reset</button>
+      <input class="border bg-gray-200 text-gray-500 bordee" v-model="lengthPassword" type="number" placeholder="ex: 8" name="lengthPassword" id="lengthPassword" />
+      <button class="bg-blue-500 text-white p-3 rounded shadow " @click="generatePassword" type="button">Generate</button>
+      <button class="bg-gray-100 text-gray-800 border px-3 py-2 rounded" @click="reset" type="button">Reset</button>
       <span v-if="result != ''" id="result">
          <small>Your password : </small>
          <p>{{ result }}</p>
