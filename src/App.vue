@@ -1,16 +1,17 @@
 <template>
-   <h3 class="text-center text-2xl  text-bold">Random Password Generator</h3>
-   <Form></Form>
+   <Grid></Grid>   
 </template>
 
 <script>
    
    import Form from './components/Form.vue'
+   import Grid from './components/Grid.vue'
    
    export default {
       name: 'App',
       components: {
-         Form
+         Form,
+         Grid
       }
    }
    
