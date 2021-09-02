@@ -1,5 +1,5 @@
 <template>
-   <h3>Random Password Generator</h3>
+   <h3 class="text-center text-2xl  text-bold">Random Password Generator</h3>
    <Form></Form>
 </template>
 
